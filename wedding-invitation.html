@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="de-no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Astrid & Finn · 30.01.2027</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Montserrat:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      background: #0d1b2a;
+      color: #e8dfd0;
+      min-height: 100vh;
+      text-align: center;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      background: linear-gradient(160deg, #0d1b2a 0%, #1a2e44 50%, #0d1b2a 100%);
+      padding: 5rem 2rem 3.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .snowflake-bg {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      opacity: 0.07;
+      font-size: 3rem;
+    }
+
+    .sf { position: absolute; color: #a8c4d4; }
+    .sf:nth-child(1) { top: 6%; left: 5%;  font-size: 2.5rem; }
+    .sf:nth-child(2) { top: 12%; right: 6%; font-size: 1.8rem; }
+    .sf:nth-child(3) { bottom: 10%; left: 8%; font-size: 1.5rem; }
+    .sf:nth-child(4) { bottom: 8%; right: 7%; font-size: 2.2rem; }
+    .sf:nth-child(5) { top: 40%; left: 2%;  font-size: 1.2rem; }
+    .sf:nth-child(6) { top: 20%; left: 48%; font-size: 1.1rem; }
+
+    .supertag {
+      font-size: 11px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: #a8c4d4;
+      margin-bottom: 2.5rem;
+    }
+
+    .names {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 9vw, 5.5rem);
+      font-weight: 300;
+      font-style: italic;
+      color: #f0e8d8;
+      line-height: 1.1;
+    }
+
+    .ampersand {
+      color: #a8c4d4;
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      display: block;
+      margin: 0.2rem 0;
+    }
+
+    .hero-date {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 300;
+      color: #a8c4d4;
+      letter-spacing: 7px;
+      margin-top: 2rem;
+    }
+
+    /* ── Divider ── */
+    .divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.2rem;
+      max-width: 420px;
+      margin: 2.5rem auto;
+      padding: 0 2rem;
+    }
+    .divider-line { flex: 1; height: 0.5px; background: #2e4a63; }
+    .divider-flake { color: #a8c4d4; font-size: 1.1rem; }
+
+    /* ── Main content ── */
+    .content {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 0 1.5rem 3rem;
+    }
+
+    /* ── Event cards ── */
+    .event-card {
+      background: rgba(255,255,255,0.04);
+      border: 0.5px solid #2e4a63;
+      border-radius: 14px;
+      padding: 2.2rem 2rem;
+      margin: 1.8rem 0;
+      text-align: left;
+    }
+
+    .event-time-badge {
+      display: inline-block;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #a8c4d4;
+      background: rgba(168, 196, 212, 0.1);
+      border: 0.5px solid #2e4a63;
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 1.2rem;
+    }
+
+    .event-label-de,
+    .event-label-no {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #5a7f9a;
+      margin-bottom: 3px;
+    }
+    .event-label-no { margin-bottom: 1rem; }
+
+    .event-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-style: italic;
+      font-weight: 300;
+      color: #f0e8d8;
+      margin-bottom: 1.2rem;
+    }
+
+    .detail-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin: 8px 0;
+    }
+    .detail-icon { color: #a8c4d4; font-size: 13px; width: 18px; flex-shrink: 0; padding-top: 3px; }
+    .detail-text { font-size: 14px; color: #c8bfb0; line-height: 1.6; }
+    .detail-text strong { color: #e8dfd0; font-weight: 400; }
+
+    /* ── Bilingual description ── */
+    .bilingual {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1.4rem;
+    }
+    .bi-col {
+      background: rgba(255,255,255,0.03);
+      border-radius: 8px;
+      padding: 1rem 1.1rem;
+    }
+    .bi-label {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #5a7f9a;
+      margin-bottom: 6px;
+    }
+    .bi-text { font-size: 13px; color: #b0a898; line-height: 1.8; }
+
+    /* ── Note box ── */
+    .note-box {
+      border-left: 2px solid #2e4a63;
+      padding: 1rem 1.4rem;
+      margin: 2rem 0;
+      text-align: left;
+    }
+    .note-text { font-size: 13px; color: #9a9080; line-height: 1.9; }
+    .note-text strong { color: #c0b8a8; font-weight: 400; }
+
+    /* ── Footer ── */
+    .footer {
+      background: rgba(0,0,0,0.35);
+      padding: 3rem 2rem;
+    }
+    .footer-names {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-style: italic;
+      font-weight: 300;
+      color: #d4c9b8;
+      margin-bottom: 0.5rem;
+    }
+    .footer-sub {
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #5a7f9a;
+    }
+
+    /* ── Responsive ── */
+    /* ── RSVP ── */
+    .rsvp-section {
+      padding: 3rem 2rem;
+      background: rgba(168, 196, 212, 0.05);
+      border-top: 0.5px solid #2e4a63;
+      border-bottom: 0.5px solid #2e4a63;
+    }
+    .rsvp-tag {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #5a7f9a;
+      margin-bottom: 1rem;
+    }
+    .rsvp-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem;
+      font-style: italic;
+      font-weight: 300;
+      color: #f0e8d8;
+      margin-bottom: 0.4rem;
+    }
+    .rsvp-sub {
+      font-size: 13px;
+      color: #a8c4d4;
+      letter-spacing: 2px;
+      margin-bottom: 1.8rem;
+    }
+    .rsvp-btn {
+      display: inline-block;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: #0d1b2a;
+      background: #a8c4d4;
+      padding: 14px 36px;
+      border-radius: 40px;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .rsvp-btn:hover { background: #c4d8e4; transform: scale(1.03); }
+
+    @media (max-width: 500px) {
+      .bilingual { grid-template-columns: 1fr; }
+      .event-card { padding: 1.6rem 1.3rem; }
+      .hero { padding: 4rem 1.5rem 3rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="snowflake-bg" aria-hidden="true">
+      <span class="sf">❄</span>
+      <span class="sf">❄</span>
+      <span class="sf">❄</span>
+      <span class="sf">❄</span>
+      <span class="sf">❄</span>
+      <span class="sf">❄</span>
+    </div>
+
+    <p class="supertag">Wir heiraten &nbsp;·&nbsp; Vi gifter oss</p>
+
+    <div class="names">Astrid Aune</div>
+    <span class="ampersand">&amp;</span>
+    <div class="names">Finn Boetius</div>
+
+    <p class="hero-date">30 &nbsp;·&nbsp; 01 &nbsp;·&nbsp; 2027</p>
+  </div>
+
+  <!-- Divider -->
+  <div class="divider">
+    <div class="divider-line"></div>
+    <span class="divider-flake">❄</span>
+    <div class="divider-line"></div>
+  </div>
+
+  <!-- Main content -->
+  <div class="content">
+
+    <!-- Ceremony card -->
+    <div class="event-card">
+      <div class="event-time-badge">15:00</div>
+
+      <p class="event-label-de">DE &nbsp;·&nbsp; Standesamtliche Trauung</p>
+      <p class="event-label-no">NO &nbsp;·&nbsp; Vielse</p>
+
+      <p class="event-name">Rådhuset i Oslo</p>
+
+      <div class="detail-row">
+        <span class="detail-icon">📍</span>
+        <span class="detail-text"><strong>Rådhuset</strong>, Fridtjof Nansens plass 1, 0160 Oslo</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-icon">🕒</span>
+        <span class="detail-text"><strong>15:00</strong></span>
+      </div>
+
+      <div class="bilingual">
+        <div class="bi-col">
+          <p class="bi-label">Deutsch</p>
+          <p class="bi-text">Die standesamtliche Trauung findet im Rathaus Oslo statt und ist nur für die engste Familie.</p>
+        </div>
+        <div class="bi-col">
+          <p class="bi-label">Norsk</p>
+          <p class="bi-text">Vielsen holdes på Rådhuset i Oslo og er forbeholdt nærmeste familie.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Party card -->
+    <div class="event-card">
+      <div class="event-time-badge">18:00</div>
+
+      <p class="event-label-de">DE &nbsp;·&nbsp; Hochzeitsfeier</p>
+      <p class="event-label-no">NO &nbsp;·&nbsp; Bryllupsfest</p>
+
+      <p class="event-name">Grefsenkollen Restaurant</p>
+
+      <div class="detail-row">
+        <span class="detail-icon">📍</span>
+        <span class="detail-text"><strong>Grefsenkollen Restaurant</strong>, Grefsenkollveien 100, 0490 Oslo</span>
+      </div>
+      <div class="detail-row">
+        <span class="detail-icon">🕕</span>
+        <span class="detail-text"><strong>18:00</strong></span>
+      </div>
+
+      <div class="bilingual">
+        <div class="bi-col">
+          <p class="bi-label">Deutsch</p>
+          <p class="bi-text">Abendessen, Tanz und Feier mit all unseren Lieben — hoch über den Dächern von Oslo mit Blick auf die Stadt und den Fjord.</p>
+        </div>
+        <div class="bi-col">
+          <p class="bi-label">Norsk</p>
+          <p class="bi-text">Middag, dans og fest med alle våre kjære — høyt over Oslo med utsikt over byen og fjorden.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Winter note -->
+    <div class="note-box">
+      <p class="note-text">
+        <strong>DE:</strong> Der Dresscode ist <em>festlich</em>. Oslo im Januar kann kalt und verschneit sein, wir empfehlen, eine warme Jacke mitzubringen.<br><br>
+        <strong>NO:</strong> Dresskoden er <em>formell</em>. Oslo i januar kan være kaldt og snørikt, vi anbefaler å ta med en varm jakke.
+      </p>
+    </div>
+
+  </div>
+
+  <!-- RSVP -->
+  <div class="rsvp-section">
+    <p class="rsvp-tag">Vennligst svar innen 1. desember 2026 &nbsp;&middot;&nbsp; Bitte antworten bis 1. Dezember 2026</p>
+    <p class="rsvp-title">RSVP</p>
+    <p class="rsvp-sub">Kommer du? &nbsp;&middot;&nbsp; Kommst du?</p>
+    <a class="rsvp-btn" href="https://form.typeform.com/to/l4213NxT" target="_blank" rel="noopener">Meld deg på &nbsp;&middot;&nbsp; Anmelden</a>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p class="footer-names">Astrid &amp; Finn</p>
+    <p class="footer-sub">Oslo &nbsp;·&nbsp; Januar 2027</p>
+  </div>
+
+</body>
+</html>
