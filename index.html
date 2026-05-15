@@ -276,6 +276,36 @@
     }
     .rsvp-btn:hover { background: #c4d8e4; transform: scale(1.03); }
 
+    /* ── Hero links ── */
+    .hero-links {
+      margin-top: 2.2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    .hero-rsvp-btn {
+      display: inline-block;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: #0d1b2a;
+      background: #a8c4d4;
+      padding: 14px 36px;
+      border-radius: 40px;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .hero-rsvp-btn:hover { background: #c4d8e4; transform: scale(1.03); }
+    .hero-wishlist {
+      font-size: 13px;
+      color: #5a7f9a;
+      letter-spacing: 2px;
+    }
+    .hero-wishlist em { font-style: italic; }
+
     @media (max-width: 500px) {
       .bilingual { grid-template-columns: 1fr; }
       .event-card { padding: 1.6rem 1.3rem; }
@@ -303,6 +333,11 @@
     <div class="names">Finn Boetius</div>
 
     <p class="hero-date">30 &nbsp;·&nbsp; 01 &nbsp;·&nbsp; 2027</p>
+
+    <div class="hero-links">
+      <a class="hero-rsvp-btn" href="https://form.typeform.com/to/l4213NxT" target="_blank" rel="noopener">Meld deg på &nbsp;·&nbsp; Anmelden</a>
+      <p class="hero-wishlist">Ønskeliste &nbsp;·&nbsp; Wunschliste &nbsp;—&nbsp; <em>Kommer snart &nbsp;·&nbsp; Kommt bald</em></p>
+    </div>
   </div>
 
   <!-- Divider -->
@@ -393,7 +428,7 @@
 
   <!-- RSVP -->
   <div class="rsvp-section">
-    <p class="rsvp-title">RSVP</p>
+    <p class="rsvp-title">Påmelding &nbsp;·&nbsp; Anmeldung</p>
     <p class="rsvp-sub">Vennligst svar innen 1. november 2026 &nbsp;&middot;&nbsp; Bitte antworten bis 1. November 2026</p>
     <a class="rsvp-btn" href="https://form.typeform.com/to/l4213NxT" target="_blank" rel="noopener">Meld deg på &nbsp;&middot;&nbsp; Anmelden</a>
   </div>
