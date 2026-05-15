@@ -547,6 +547,167 @@
       font-size: 0.92em;
     }
 
+    .rsvp-form-wrap {
+      max-width: 620px;
+      margin: 0 auto;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2.4rem;
+    }
+
+    .rsvp-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.6rem;
+    }
+
+    .rsvp-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .rsvp-label {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--rose);
+      font-weight: 700;
+    }
+
+    .rsvp-label-de {
+      font-weight: 400;
+      color: var(--muted);
+      text-transform: none;
+      letter-spacing: 0;
+      font-style: italic;
+    }
+
+    .rsvp-label-opt {
+      font-weight: 400;
+      color: var(--muted);
+      text-transform: none;
+      letter-spacing: 0;
+      font-size: 0.9em;
+    }
+
+    .rsvp-input,
+    .rsvp-textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.95rem;
+      color: var(--dark);
+      background: var(--cream);
+      transition: border-color 0.2s, background 0.2s;
+      outline: none;
+    }
+
+    .rsvp-input:focus,
+    .rsvp-textarea:focus {
+      border-color: var(--blush);
+      background: #fff;
+    }
+
+    .rsvp-input-sm { max-width: 130px; }
+
+    .rsvp-field-hint {
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .rsvp-textarea { resize: vertical; }
+
+    .rsvp-attend-group {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem;
+    }
+
+    .rsvp-attend-option { cursor: pointer; }
+
+    .rsvp-attend-option input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .rsvp-attend-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 1.1rem 1rem;
+      border: 1.5px solid var(--border);
+      border-radius: 14px;
+      text-align: center;
+      background: var(--cream);
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .rsvp-attend-card strong {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: var(--dark);
+    }
+
+    .rsvp-attend-sub {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .rsvp-attend-option input[type="radio"]:checked + .rsvp-attend-card {
+      border-color: var(--rose);
+      background: var(--pale);
+    }
+
+    .rsvp-attend-option:hover .rsvp-attend-card { border-color: var(--blush); }
+
+    .rsvp-submit { width: 100%; margin-top: 0.4rem; }
+
+    .rsvp-error {
+      font-size: 0.85rem;
+      color: #7a2020;
+      padding: 0.7rem 1rem;
+      background: #fdf0ef;
+      border: 1px solid #f5c6c3;
+      border-radius: 8px;
+      display: none;
+    }
+
+    .rsvp-success {
+      text-align: center;
+      padding: 3rem 1rem;
+    }
+
+    .rsvp-success-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      color: var(--rose);
+      margin-bottom: 0.6rem;
+    }
+
+    .rsvp-success p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .rsvp-success .de {
+      display: block;
+      font-style: italic;
+      margin-top: 0.25em;
+      font-size: 0.92em;
+    }
+
+    @media (max-width: 500px) {
+      .rsvp-form-wrap { padding: 1.6rem 1.2rem; }
+    }
+
 
     /* -- Footer ------------------------------------------------- */
     footer {
@@ -880,17 +1041,106 @@
         <span class="de">Bitte antwortet bis zum <strong>1. November 2026</strong>. Wir freuen uns auf euch!</span>
       </p>
 
-      <!-- TODO: change style?-->
-      <div style="max-width:700px; margin:0 auto; border-radius:24px; overflow:hidden; box-shadow:0 4px 40px rgba(196,105,106,0.12);">
-        <iframe
-          src="https://form.typeform.com/to/l4213NxT"
-          width="100%"
-          height="540"
-          frameborder="0"
-          allow="camera; microphone; autoplay; encrypted-media;"
-          style="display:block; border:none;"
-          title="RSVP — Astrid &amp; Finn"
-        ></iframe>
+      <div class="rsvp-form-wrap" id="rsvp-form-wrap">
+        <form
+          id="rsvp-form"
+          class="rsvp-form"
+          action="https://formspree.io/f/mojrogvd"
+          method="POST"
+          novalidate
+        >
+          <!-- Name -->
+          <div class="rsvp-field">
+            <label class="rsvp-label" for="rsvp-name">
+              Navn <span class="rsvp-label-de">/ Name</span>
+            </label>
+            <input
+              id="rsvp-name"
+              name="name"
+              type="text"
+              class="rsvp-input"
+              required
+              autocomplete="name"
+              placeholder="Ola Nordmann"
+            />
+            <span class="rsvp-field-hint">
+              Er dere to? Legg inn begge navn.
+              <span class="rsvp-label-de">/ Kommt ihr zu zweit? Gebt beide Namen an.</span>
+            </span>
+          </div>
+
+          <!-- Attendance -->
+          <div class="rsvp-field">
+            <span class="rsvp-label">
+              Kommer du? <span class="rsvp-label-de">/ Kommst du?</span>
+            </span>
+            <div class="rsvp-attend-group">
+              <label class="rsvp-attend-option">
+                <input type="radio" name="attendance" value="Ja" required />
+                <span class="rsvp-attend-card">
+                  <strong>Ja</strong>
+                  <span class="rsvp-attend-sub">Jeg kommer! · Ich komme!</span>
+                </span>
+              </label>
+              <label class="rsvp-attend-option">
+                <input type="radio" name="attendance" value="Nei" required />
+                <span class="rsvp-attend-card">
+                  <strong>Nei</strong>
+                  <span class="rsvp-attend-sub">Kan dessverre ikke · Leider nicht</span>
+                </span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Dietary (shown only when attending) -->
+          <div class="rsvp-field" id="rsvp-dietary-field" hidden>
+            <label class="rsvp-label" for="rsvp-dietary">
+              Matpreferanser / allergier
+              <span class="rsvp-label-de">/ Ernährung / Allergien</span>
+              <span class="rsvp-label-opt">&nbsp;(valgfritt · optional)</span>
+            </label>
+            <textarea
+              id="rsvp-dietary"
+              name="dietary"
+              class="rsvp-textarea"
+              rows="2"
+              placeholder="Vegetar, gluten, nøtter… / Vegetarisch, Gluten, Nüsse…"
+            ></textarea>
+          </div>
+
+          <!-- Message -->
+          <div class="rsvp-field">
+            <label class="rsvp-label" for="rsvp-message">
+              Melding <span class="rsvp-label-de">/ Nachricht</span>
+              <span class="rsvp-label-opt">&nbsp;(valgfritt · optional)</span>
+            </label>
+            <textarea
+              id="rsvp-message"
+              name="message"
+              class="rsvp-textarea"
+              rows="3"
+              placeholder="Noe du vil si oss? / Möchtest du uns etwas sagen?"
+            ></textarea>
+          </div>
+
+          <div id="rsvp-error" class="rsvp-error">
+            Noe gikk galt. Prøv igjen eller send oss en e-post.
+            <span class="rsvp-label-de">/ Etwas ist schiefgelaufen. Bitte erneut versuchen oder schreib uns eine E-Mail.</span>
+          </div>
+
+          <button type="submit" class="btn btn-primary rsvp-submit" id="rsvp-submit">
+            Send svar · Anmeldung absenden
+          </button>
+        </form>
+
+        <!-- Success state (hidden until submission) -->
+        <div id="rsvp-success" class="rsvp-success" hidden>
+          <p class="rsvp-success-title serif">Takk!</p>
+          <p>
+            Vi har mottatt svaret ditt og gleder oss til å høre fra deg.
+            <span class="de">Wir haben deine Antwort erhalten und freuen uns auf dich.</span>
+          </p>
+        </div>
       </div>
     </div>
   </section>
@@ -922,6 +1172,46 @@
     document.getElementById('banner-close').addEventListener('click', function () {
       document.getElementById('info-banner').classList.add('dismissed');
     });
+
+    /* -- RSVP form --------------------------------------------- */
+    (function initRsvpForm() {
+      const form       = document.getElementById('rsvp-form');
+      const submitBtn  = document.getElementById('rsvp-submit');
+      const dietaryField  = document.getElementById('rsvp-dietary-field');
+      const successEl  = document.getElementById('rsvp-success');
+      const errorEl    = document.getElementById('rsvp-error');
+
+      form.querySelectorAll('input[name="attendance"]').forEach(function (radio) {
+        radio.addEventListener('change', function () {
+          const coming = radio.value === 'Ja';
+          dietaryField.hidden = !coming;
+        });
+      });
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        errorEl.style.display = 'none';
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sender… / Wird gesendet…';
+
+        fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        })
+          .then(function (res) {
+            if (!res.ok) throw new Error('server');
+            submitBtn.textContent = 'Sendt! · Gesendet!';
+            form.hidden = true;
+            successEl.hidden = false;
+          })
+          .catch(function () {
+            errorEl.style.display = 'block';
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Send svar · Anmeldung absenden';
+          });
+      });
+    })();
 
     /* -- Countdown --------------------------------------------- */
     (function startCountdown() {
