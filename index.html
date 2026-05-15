@@ -21,6 +21,7 @@
       --dark:       #0D1F35;   /* deep night          */
       --muted:      #5C7A9C;   /* slate               */
       --border:     #BDD0E4;   /* ice border          */
+      --nav-h:      3.6rem;
     }
 
     html { scroll-behavior: smooth; }
@@ -328,8 +329,8 @@
     .tl-item::after {
       content: '❄';
       position: absolute;
-      left: 60px;
-      top: 3px;
+      left: 56px;
+      top: 2px;
       font-size: 0.75rem;
       color: var(--blush);
       background: var(--cream);
@@ -342,7 +343,8 @@
       font-size: 1rem;
       color: var(--muted);
       text-align: right;
-      padding-top: 2px;
+      padding-top: 5px;
+      padding-right: 4px;
       white-space: nowrap;
     }
 
@@ -570,6 +572,71 @@
       nav { padding: 0.75rem 1.2rem; }
       .nav-links { display: none; }
     }
+
+    /* -- Info banner -------------------------------------------- */
+    .info-banner {
+      position: fixed;
+      top: var(--nav-h);
+      left: 0; right: 0;
+      z-index: 99;
+      background: var(--champagne);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      padding: 0.55rem 3.5rem;
+      text-align: center;
+      transition: opacity 0.35s, transform 0.35s;
+    }
+
+    .info-banner.dismissed {
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-110%);
+    }
+
+    .info-banner-icon {
+      font-size: 0.9rem;
+      color: var(--blush);
+      flex-shrink: 0;
+    }
+
+    .info-banner-text {
+      display: flex;
+      flex-direction: column;
+      gap: 0.05em;
+    }
+
+    .info-banner-text .lang-no {
+      font-size: 0.78rem;
+      color: var(--dark);
+    }
+
+    .info-banner-text .lang-de {
+      font-size: 0.72rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .info-banner-close {
+      position: absolute;
+      right: 1rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--muted);
+      font-size: 1.1rem;
+      line-height: 1;
+      padding: 0.3rem 0.4rem;
+      transition: color 0.2s;
+    }
+
+    .info-banner-close:hover { color: var(--rose); }
+
+    @media (max-width: 600px) {
+      .info-banner { padding: 0.55rem 2.8rem 0.55rem 1rem; text-align: left; }
+    }
   </style>
 </head>
 <body>
@@ -584,6 +651,16 @@
       <li><a href="#rsvp">RSVP</a></li>
     </ul>
   </nav>
+
+  <!-- -- Info banner ------------------------------------------ -->
+  <div class="info-banner" id="info-banner" role="status" aria-live="polite">
+    <span class="info-banner-icon" aria-hidden="true">❄</span>
+    <div class="info-banner-text">
+      <span class="lang-no">Siden oppdateres løpende, mer informasjon og eventuelle endringer kan komme.</span>
+      <span class="lang-de">Diese Seite wird laufend aktualisiert, weitere Infos und mögliche Änderungen folgen.</span>
+    </div>
+    <button class="info-banner-close" id="banner-close" aria-label="Lukk / Schließen">×</button>
+  </div>
 
   <!-- -- Hero ------------------------------------------------- -->
   <section id="hero">
@@ -841,9 +918,14 @@
       }
     })();
 
+    /* -- Info banner dismiss ----------------------------------- */
+    document.getElementById('banner-close').addEventListener('click', function () {
+      document.getElementById('info-banner').classList.add('dismissed');
+    });
+
     /* -- Countdown --------------------------------------------- */
     (function startCountdown() {
-      const target = new Date('2027-01-30T13:00:00');
+      const target = new Date('2027-01-30T15:00:00+01:00');
 
       function tick() {
         const diff = target - Date.now();
