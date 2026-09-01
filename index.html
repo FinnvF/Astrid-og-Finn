@@ -298,6 +298,21 @@
     /* -- Program ------------------------------------------------ */
     #program { background: var(--cream); }
 
+    .program-note {
+      text-align: center;
+      max-width: 560px;
+      margin: -1.4rem auto 2.6rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .program-note .de {
+      display: block;
+      font-style: italic;
+      font-size: 0.92em;
+      margin-top: 0.25em;
+    }
+
     .timeline {
       position: relative;
       max-width: 640px;
@@ -405,6 +420,59 @@
 
     .tl-body .map-link:hover { color: #15305a; }
 
+    /* extra timeslots within an event · zusätzliche Zeiten je Programmpunkt */
+    .tl-schedule {
+      list-style: none;
+      margin-top: 0.9rem;
+      padding-top: 0.8rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .tl-slot {
+      display: grid;
+      grid-template-columns: 4.4rem 1fr;
+      gap: 0.9rem;
+      align-items: baseline;
+    }
+
+    .tl-slot-time {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.92rem;
+      color: var(--rose);
+      white-space: nowrap;
+    }
+
+    .tl-slot-label {
+      font-size: 0.88rem;
+      color: var(--dark);
+      line-height: 1.5;
+    }
+
+    .tl-slot-label .de {
+      display: block;
+      color: var(--muted);
+      font-style: italic;
+      font-size: 0.9em;
+    }
+
+    /* free-form note under the schedule · Fließtext-Hinweis unter dem Ablauf */
+    .tl-note {
+      margin-top: 0.9rem;
+      font-size: 0.84rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .tl-note .de {
+      display: block;
+      font-style: italic;
+      font-size: 0.95em;
+      margin-top: 0.2em;
+    }
+
     @media (max-width: 500px) {
       .timeline::before { left: 56px; }
       .tl-item { grid-template-columns: 56px 1fr; gap: 0 1.2rem; }
@@ -485,6 +553,41 @@
     }
 
     .info-card .map-link:hover { color: #15305a; }
+
+    /* -- Travel modes (transport card) -------------------------- */
+    .travel-block { margin-top: 1.25rem; }
+    .travel-block:first-of-type { margin-top: 0; }
+
+    .travel-head {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--rose);
+      padding-bottom: 0.35rem;
+      margin-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .travel-head .de {
+      font-weight: 400;
+      font-style: italic;
+      text-transform: none;
+      letter-spacing: 0;
+      color: var(--muted);
+    }
+
+    .info-card p + p { margin-top: 0.25rem; }
+
+    .travel-note {
+      margin-top: 0.6rem !important;
+      font-size: 0.82rem !important;
+      border-left: 2px solid var(--blush);
+      padding-left: 0.75rem;
+    }
 
     /* -- Wishlist ----------------------------------------------- */
     #wishlist { background: var(--cream); }
@@ -876,6 +979,11 @@
       </h2>
       <div class="section-sep"><span class="flake">❄</span></div>
 
+      <p class="program-note">
+        Vi oppdaterer programmet med flere detaljer etter hvert.
+        <span class="de">Wir ergänzen das Programm nach und nach mit weiteren Details.</span>
+      </p>
+
       <div class="timeline">
 
         <div class="tl-item">
@@ -894,6 +1002,33 @@
               target="_blank"
               rel="noopener"
             >Veibeskrivelse · Wegbeschreibung</a>
+
+            <!--
+            To add more times, copy the <li>-block for each time.
+            -->
+            <!-- TODO: uncomment
+            <ul class="tl-schedule">
+              <li class="tl-slot">
+                <span class="tl-slot-time">TODO</span>
+                <span class="tl-slot-label">
+                  Ankomst
+                  <span class="de">Ankunft</span>
+                </span>
+              </li>
+              <li class="tl-slot">
+                <span class="tl-slot-time">TODO</span>
+                <span class="tl-slot-label">
+                  Brudeparet kommer ut av rådhuset
+                  <span class="de">Das Brautpaar kommt aus dem Rathaus</span>
+                </span>
+              </li>
+            </ul>
+            -->
+            <p class="tl-note">
+              Etter vielsen drar brudeparet for å ta bilder med fotografen, mens gjestene disponerer tiden fritt frem til festen. Det er flere restauranter og barer rundt rådhuset hvor man kan ta seg en matbit eller et glass.
+              <span class="de">Nach der Trauung fährt das Brautpaar los, um Fotos mit dem Fotografen zu machen, während die Gäste die Zeit bis zur Feier frei zur Verfügung haben. Rund um das Rathaus gibt es mehrere Restaurants und Bars für einen Snack oder ein Glas.</span>
+            </p>
+            
           </div>
         </div>
 
@@ -913,6 +1048,56 @@
               target="_blank"
               rel="noopener"
             >Veibeskrivelse · Wegbeschreibung</a>
+
+            <!--
+            To add more times, copy the <li>-block for each time.
+            -->
+            <!-- TODO: uncomment
+            <ul class="tl-schedule">
+              <li class="tl-slot">
+                <span class="tl-slot-time">18:00</span>
+                <span class="tl-slot-label">
+                  Ankomst og velkomstdrink
+                  <span class="de">Ankunft und Willkommensdrink</span>
+                </span>
+              </li>
+              <li class="tl-slot">
+                <span class="tl-slot-time">ca. 18:15</span>
+                <span class="tl-slot-label">
+                  Brudetparet ankommer
+                  <span class="de">Das Brautpaar kommt</span>
+                </span>
+              </li>
+              <li class="tl-slot">
+                <span class="tl-slot-time">19:00</span>
+                <span class="tl-slot-label">
+                  Middag
+                  <span class="de">Abendessen</span>
+                </span>
+              </li>
+              <li class="tl-slot">
+                <span class="tl-slot-time">TODO</span>
+                <span class="tl-slot-label">
+                  Kaffe og kaker
+                  <span class="de">Kaffee und Kuchen</span>
+                </span>
+              </li>
+              <li class="tl-slot">
+                <span class="tl-slot-time">TODO</span>
+                <span class="tl-slot-label">
+                  DJ og dans
+                  <span class="de">DJ und Tanz</span>
+                </span>
+              </li>
+              <li class="tl-slot">
+                <span class="tl-slot-time">01:00</span>
+                <span class="tl-slot-label">
+                  Takk for i kveld!
+                  <span class="de">Gute Nacht!</span>
+                </span>
+              </li>
+            </ul>
+            -->
           </div>
         </div>
 
@@ -949,27 +1134,47 @@
           <div class="info-card-header">
             <h3>Transport <span class="sub">Anreise</span></h3>
           </div>
-          <p>
-            <strong>Bil · Auto:</strong> 
-            <br>Grefsenkollen har gratis parkering.
-            <br><em>Grefsenkollen hat einen kostenlosen Parkplatz.</em>
-          </p>
-          <p style="margin-top:0.7rem;">
-            <strong>Kollektivtransport · Öffentliche Verkehrsmittel:</strong>
-            <br>Ta T-bane til <strong>Storo</strong> (linje 5 mot Ringen) og buss 56B opp til <strong>Grefsenkollen</strong>. OBS! Siste buss går kl. 17.50. Planlegg reisen på <a href="https://ruter.no" target="_blank" rel="noopener">ruter.no</a>.
-            <br><em>Mit der T-Bahn bis <strong>Storo</strong> (Linie 5 Richtung Ringen) und Bus 56B bis <strong>Grefsenkollen</strong>. ACHTUNG! Der letzte Bus fährt um 17:50 Uhr. Reise planen auf <a href="https://ruter.no/en" target="_blank" rel="noopener">ruter.no</a>. </em>
-          </p>
-          <p style="margin-top:0.7rem;">
-            <strong>Taxi:</strong> 
-            <br>Ta taxi direkte fra Oslo sentrum, eller ta T-bane til <strong>Storo</strong> (linje 5 mot Ringen) og taxi derfra for en kortere og billigere tur.
-            <br><em>Taxi direkt aus Oslo Zentrum, oder mit der T-Bahn bis <strong>Storo</strong> (Linie 5 Richtung Ringen) und von dort ein Taxi nehmen für eine kürzere und günstigere Fahrt.</em>
-          </p>
-          <p style="margin-top:0.5rem;">
-            Oslo Taxi: <strong>02323</strong>
-            &nbsp;·&nbsp;
-            <strong>+47 22 38 80 90</strong>
-            <span style="font-size:0.8em;color:var(--muted);"> (fra utlandet · aus dem Ausland)</span>
-          </p>
+          <div class="travel-block">
+            <span class="travel-head">Bil <span class="de">· Auto</span></span>
+            <p>Grefsenkollen har gratis parkering.</p>
+            <p><em>Grefsenkollen hat einen kostenlosen Parkplatz.</em></p>
+          </div>
+
+          <div class="travel-block">
+            <span class="travel-head">Kollektivtransport <span class="de">· Öffentlicher Verkehr</span></span>
+            <p>
+              1. T-bane <strong>linje 5</strong> (mot Ringen) → <strong>Storo</strong>
+              <br>2. Buss <strong>56B</strong> → <strong>Grefsenkollen</strong>
+              <br>Planlegg reisen på <a href="https://ruter.no" target="_blank" rel="noopener">ruter.no</a>.
+            </p>
+            <p>
+              <em>1. T-Bahn <strong>Linie 5</strong> (Richtung Ringen) → <strong>Storo</strong></em>
+              <br><em>2. Bus <strong>56B</strong> → <strong>Grefsenkollen</strong></em>
+              <br><em>Reise planen auf <a href="https://ruter.no/en" target="_blank" rel="noopener">ruter.no</a>.</em>
+            </p>
+            <p class="travel-note">
+              <strong>OBS!</strong> Buss 56B slutter å gå tidlig på kvelden.
+              <br><em><strong>ACHTUNG!</strong> Der Bus 56B fährt schon am frühen Abend nicht mehr.</em>
+            </p>
+          </div>
+
+          <div class="travel-block">
+            <span class="travel-head">Taxi</span>
+            <p>Ta taxi direkte fra Oslo sentrum, eller ta T-banen til <strong>Storo</strong> (linje 5 mot Ringen) og taxi derfra for en kortere og billigere tur.</p>
+            <p><em>Taxi direkt aus Oslo Zentrum, oder mit der T-Bahn bis <strong>Storo</strong> (Linie 5 Richtung Ringen) und von dort ein Taxi nehmen für eine kürzere und günstigere Fahrt.</em></p>
+            <p class="travel-note">
+              Oslo Taxi: <strong>02323</strong>
+              &nbsp;·&nbsp;
+              <strong>+47 22 38 80 90</strong>
+              <span style="font-size:0.8em;"> (fra utlandet · aus dem Ausland)</span>
+            </p>
+          </div>
+
+          <div class="travel-block">
+            <span class="travel-head">Hjemreise <span class="de">· Rückweg</span></span>
+            <p>Buss 56B går ikke om kvelden. Ta taxi, evt. til <strong>Storo</strong> og videre med <strong>T-banen</strong>.</p>
+            <p><em>Der Bus 56B fährt abends nicht. Nimm ein Taxi, ggf. bis <strong>Storo</strong> und weiter mit der <strong>T-Bahn</strong>.</em></p>
+          </div>
         </div>
 
         <!-- Hotel -->
@@ -990,7 +1195,7 @@
             <h3>Antrekk <span class="sub">Dresscode</span></h3>
           </div>
           <p>
-            Formelt antrekk. Ta gjerne på deg bunaden din.
+            Formelt antrekk. Ta gjerne på deg bunaden din hvis du har.
             <br><em>Formelle Kleidung</em>
           </p>
           <p style="margin-top:0.6rem;">
@@ -1061,7 +1266,7 @@
               class="rsvp-input"
               required
               autocomplete="name"
-              placeholder="Ola Nordmann"
+              placeholder="Ola & Kari Nordmann"
             />
             <span class="rsvp-field-hint">
               Er dere to? Legg inn begge navn.
@@ -1119,7 +1324,7 @@
               name="message"
               class="rsvp-textarea"
               rows="3"
-              placeholder="Noe du vil si til oss? / Möchtest du uns etwas sagen?"
+              placeholder="Er det noe annet vi bør vite? / Gibt es etwas, das wir wissen sollten?"
             ></textarea>
           </div>
 
@@ -1237,4 +1442,3 @@
   </script>
 </body>
 </html>
-
